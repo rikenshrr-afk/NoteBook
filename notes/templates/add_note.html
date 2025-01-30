@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+{% block title %}Add/Edit Note{% endblock %}
+
+
+ {% block content%}
+<div class="d1">
+<div class=" d1 text-center">
+  <h1>{{ note|default_if_none:"Add" }}Note</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success"><i class="fa fa-save" aria-hidden="true" title="Save"></i>
+    </button>
+    <a href="{% url 'index' %}" class="btn btn-danger"><i class="fa fa-window-close" aria-hidden="true" title="Cancel"></i>
+      </a>
+
+
+
+
+
+  </form>
+</div>
+</div>
+{% endblock %}

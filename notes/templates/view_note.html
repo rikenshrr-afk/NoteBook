@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+{% block title %} Notes {% endblock %}
+
+
+ {% block content%}
+ <div class="text-center">
+ <h1>Notes</h1>
+ <table class="table table-striped mt-4">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Actions</th>
+
+
+
+
+    </tr>
+</thead>
+        <tbody>
+            {% for note in notes %}
+            <tr>
+                <td>{{note.title}}</td>
+                <td>{{note.content| truncatewords:20}}</td>
+                <td>
+                    <a href="{% url 'edit_note' note.id %}" class="btn btn-sm btn-warning"><i class="fa fa-edit" aria-hidden="true" title="Edit Note" ></i>
+                    </a>
+                    <a href="{% url 'delete_note' note.id %}"class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true" title="Delete Note" ></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+
+
+
+            
+        </tbody>
+
+
+
+
+ </table>
+ <a href="{% url 'index' %}" class="btn btn-primary mt-5"><i class="fa fa-home" aria-hidden="true" title="Home" ></i>
+ </a>
+ </div>
+ {% endblock %}
